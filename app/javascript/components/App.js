@@ -1,4 +1,5 @@
 import React from "react"
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -15,8 +16,11 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+
 import { Nav,  NavLink, NavItem } from 'reactstrap'
+
 import AboutUs from './pages/AboutUs'
+
 import Home from './pages/Home'
 
 import mockApartments from './mockApartments.js'
@@ -38,10 +42,10 @@ class App extends React.Component {
     return (
   <Router>
 
-      <h2>Hello world!</h2>
+      <h2>Apartment App</h2>
       <Header />
 
-          <h1>This is a React Component</h1>
+          <h1>Where your apartment dreams are turned into our profit :)</h1>
             <Switch>
               <Route path="/" component={ Home } />
 
@@ -56,9 +60,9 @@ class App extends React.Component {
 
         <Footer
         logged_in={ logged_in }
-        signed_in_route={ sign_in_route }
-        signed_up_route={ sign_up_route }
-        signed_out_route={ sign_out_route }/>
+        sign_in_route={ sign_in_route }
+        sign_up_route={ sign_up_route }
+        sign_out_route={ sign_out_route }/>
 
   </Router>
     );

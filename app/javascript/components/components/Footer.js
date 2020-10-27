@@ -14,30 +14,39 @@ export default class Footer extends Component {
       logged_in,
       sign_in_route,
       sign_up_route,
-      sign_out_route,
+      sign_out_route
     } = this.props
     return(
           <>
           <div>
               <Nav>
                   <NavItem>
-                      <NavLink href="/">Home</NavLink>
+                      <a href="/">Home</a>
                   </NavItem>
                   <NavItem>
-                      <NavLink href="/apartmentindex">Apartment Index</NavLink>
+                      <a href="/apartmentindex">|View Apartments| </a>
                   </NavItem>
+
                     { logged_in &&
-                      <NavItem>
-                        <a href={sign_out_route}>Log Out</a>
-                      </NavItem>
-                    }
+                      <>
+                        <NavItem>
+                          <a href={ sign_out_route }>Sign Out</a>
+                        </NavItem>
+                        <NavItem>
+                          <a href="/apartmentnew">Create a New Apartment</a>
+                        </NavItem>
+                      </>
+                  }
                     { !logged_in &&
                       <>
-                      <NavItem>
-                        <a href={sign_in_route}>Log In</a>
-                      </NavItem>
+                        <NavItem>
+                          <a href={ sign_in_route }>  |Sign In|</a>
+                        </NavItem>
+                        <NavItem>
+                          <a href={ sign_up_route }></a>
+                        </NavItem>
                       </>
-                    }
+                  }
                 </Nav>
             </div>
           </>
