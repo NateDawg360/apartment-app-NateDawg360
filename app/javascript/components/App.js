@@ -32,6 +32,9 @@ class App extends React.Component {
       apartments: mockApartments
     }
   }
+    createNewApartments = (newApartment) => {
+      console.log(newApartment);
+    }
   render () {
     const {
       logged_in,
@@ -41,22 +44,57 @@ class App extends React.Component {
     } = this.props
     return (
   <Router>
+  <h2>Apartment App</h2>
+  <h1>Where your apartment dreams are turned into our profit :)</h1>
+  <Header />
+      <Switch>
 
-      <h2>Apartment App</h2>
-      <Header />
 
-          <h1>Where your apartment dreams are turned into our profit :)</h1>
-            <Switch>
-              <Route path="/" component={ Home } />
+                <Route exact path="/" component={ Home } />
 
-              <Route path="/apartmentindex" component={ ApartmentIndex } />
-              <Route path="/apartmentedit" component={ ApartmentEdit } />
-              <Route path="/apartmentnew" component={ ApartmentNew } />
-              <Route path="/apartmentshow/:id" component={ ApartmentShow } />
+                  <Route
+                    path="/apartmentindex"
+                    render={ (props) => <ApartmentIndex apartments={ this.state.apartments }
+                  /> } />
 
-              <Route path="/about" component={ AboutUs } />
-              <Route component={ NotFound } />
-            </Switch>
+                  { logged_in &&
+                    <Route
+                      path="/apartmentedit/:id"
+                      render={ (props) =>
+                        <ApartmentEdit
+                          userEditApartment={ this.userEditApartment }
+                          current_user={ current_user }
+                        />
+                      }
+                    />
+                  }
+
+                  { logged_in &&
+                    <Route
+                      path="/apartmentnew"
+                      render={ (props) =>
+                        <ApartmentNew
+                          createNewApartment={ this.createNewApartment }
+                          current_user={ current_user }
+                        />
+                      }
+                    />
+                  }
+
+                <Route
+                  path="/apartmentshow/:id"
+                  render={ (props) => {
+                    let id = props.match.params.id
+                    let apartment = this.state.apartments.find(apt => apt.id === parseInt(id))
+                    return (
+                      <ApartmentShow apartment={ apartment } />
+                    )
+                  } }
+                />
+
+                <Route path="/about" component={ AboutUs } />
+                <Route component={ NotFound } />
+      </Switch>
 
         <Footer
         logged_in={ logged_in }
