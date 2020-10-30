@@ -42,7 +42,7 @@ class ApartmentNew extends Component{
     return(
       <>
       <h3>Add an Apartment</h3>
-      <div className="body-container">
+      <div className="form-body">
         <div className="form">
           <Form>
                 <FormGroup>
@@ -148,7 +148,7 @@ class ApartmentNew extends Component{
           </Form>
         </div>
       </div>
-      { this.state.success && <Redirect to="/myindex" /> }
+      { this.state.success && <Redirect to="/myapartmentindex" /> }
       </>
     )
   }

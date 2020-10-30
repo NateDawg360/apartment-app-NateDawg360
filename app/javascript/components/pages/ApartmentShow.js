@@ -16,6 +16,16 @@ class ApartmentShow extends Component{
             <p>Bath: { apartment.bathrooms }</p>
             <p>Are Pets Allowed?: { apartment.pets }</p>
         </div>
+        { !this.props.logged_in &&
+          <Link to={"/apartmentindex"} className="button">
+            Back to All Apartments
+          </Link>
+        }
+        { this.props.logged_in &&
+          <Link to={"/myapartmentindex"} className="button">
+            Back to My Apartments
+          </Link>
+        }
       </>
     )
   }

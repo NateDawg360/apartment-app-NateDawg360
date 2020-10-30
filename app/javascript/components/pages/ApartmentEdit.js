@@ -145,7 +145,7 @@ class ApartmentEdit extends Component{
                     Edit Apartment
                     </Button>
                   </Form>
-                  { this.state.success && <Redirect to="/apartmentindex" /> }
+                  { this.state.success && <Redirect to="/myapartmentindex" /> }
                 </div>
       </>
     )
